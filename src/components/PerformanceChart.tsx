@@ -107,42 +107,42 @@ const PerformanceChart = () => {
   );
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">Weekly Performance</h2>
-        <div className="flex items-center space-x-2 text-sm text-gray-500">
-          <Calendar className="w-4 h-4" />
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 space-y-2 sm:space-y-0">
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Weekly Performance</h2>
+        <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-500">
+          <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
           <span>Last 7 days</span>
         </div>
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="text-center p-4 bg-purple-50 rounded-lg">
-          <div className="text-2xl font-bold text-purple-600">{completedTasks}</div>
-          <div className="text-sm text-purple-600 font-medium">Tasks Completed</div>
+      <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
+        <div className="text-center p-3 sm:p-4 bg-purple-50 rounded-lg">
+          <div className="text-lg sm:text-2xl font-bold text-purple-600">{completedTasks}</div>
+          <div className="text-xs sm:text-sm text-purple-600 font-medium leading-tight">Tasks Completed</div>
         </div>
-        <div className="text-center p-4 bg-blue-50 rounded-lg">
-          <div className="text-2xl font-bold text-blue-600">{totalFiles}</div>
-          <div className="text-sm text-blue-600 font-medium">Files Uploaded</div>
+        <div className="text-center p-3 sm:p-4 bg-blue-50 rounded-lg">
+          <div className="text-lg sm:text-2xl font-bold text-blue-600">{totalFiles}</div>
+          <div className="text-xs sm:text-sm text-blue-600 font-medium leading-tight">Files Uploaded</div>
         </div>
-        <div className="text-center p-4 bg-green-50 rounded-lg">
-          <div className="text-2xl font-bold text-green-600">{totalLinks}</div>
-          <div className="text-sm text-green-600 font-medium">Links Saved</div>
+        <div className="text-center p-3 sm:p-4 bg-green-50 rounded-lg">
+          <div className="text-lg sm:text-2xl font-bold text-green-600">{totalLinks}</div>
+          <div className="text-xs sm:text-sm text-green-600 font-medium leading-tight">Links Saved</div>
         </div>
       </div>
 
       {/* Bar Chart */}
-      <div className="space-y-4">
-        <h3 className="font-medium text-gray-900 flex items-center space-x-2">
-          <TrendingUp className="w-4 h-4" />
+      <div className="space-y-3 sm:space-y-4">
+        <h3 className="font-medium text-gray-900 flex items-center space-x-2 text-sm sm:text-base">
+          <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
           <span>Daily Task Creation</span>
         </h3>
         
-        <div className="flex items-end space-x-2 h-32">
+        <div className="flex items-end space-x-1 sm:space-x-2 h-24 sm:h-32">
           {weeklyData.map((data, index) => (
             <div key={index} className="flex-1 flex flex-col items-center">
-              <div className="w-full flex flex-col justify-end h-24 mb-2">
+              <div className="w-full flex flex-col justify-end h-16 sm:h-24 mb-1 sm:mb-2">
                 <div 
                   className="w-full bg-gradient-to-t from-purple-500 to-purple-400 rounded-t-lg transition-all duration-500 ease-out"
                   style={{ height: `${maxTasks > 0 ? (data.tasks / maxTasks) * 100 : 0}%` }}
@@ -161,12 +161,12 @@ const PerformanceChart = () => {
       </div>
 
       {/* Productivity Insights */}
-      <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+      <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
         <div className="flex items-center space-x-2 mb-2">
-          <Target className="w-4 h-4 text-purple-600" />
-          <span className="font-medium text-purple-600">Productivity Insights</span>
+          <Target className="w-3 h-3 sm:w-4 sm:h-4 text-purple-600" />
+          <span className="font-medium text-purple-600 text-sm sm:text-base">Productivity Insights</span>
         </div>
-        <p className="text-sm text-gray-600">
+        <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
           {mostProductiveDay.tasks > 0 
             ? `Your most productive day this week was ${mostProductiveDay.day} with ${mostProductiveDay.tasks} tasks created. Keep up the momentum! 🚀`
             : "Start creating tasks to see your productivity insights! 📈"

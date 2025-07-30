@@ -150,21 +150,22 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-xl font-semibold text-gray-900">New Daily Log Entry</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b sticky top-0 bg-white z-10">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900">New Daily Log Entry</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-gray-400 hover:text-gray-600 transition-colors p-1 touch-manipulation"
+            aria-label="Close form"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {/* Date Picker */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -175,7 +176,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal",
+                    "w-full justify-start text-left font-normal h-12 sm:h-10",
                     !logDate && "text-muted-foreground"
                   )}
                 >
@@ -205,6 +206,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
               onChange={(e) => setTitle(e.target.value)}
               placeholder="What did you do today?"
               required
+              className="h-12 sm:h-10 text-base"
             />
           </div>
 
@@ -218,6 +220,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Describe your activities, thoughts, and progress..."
               rows={4}
+              className="text-base resize-none"
             />
           </div>
 
@@ -226,7 +229,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Image
             </label>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-gray-400 transition-colors">
               <input
                 type="file"
                 accept="image/*"
@@ -236,21 +239,26 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
               />
               <label
                 htmlFor="image-upload"
-                className="cursor-pointer flex flex-col items-center space-y-2"
+                className="cursor-pointer flex flex-col items-center space-y-2 touch-manipulation"
               >
                 <Image className="w-8 h-8 text-gray-400" />
-                <span className="text-sm text-gray-600">Upload an image</span>
+                <span className="text-sm text-gray-600 text-center">Upload an image</span>
               </label>
               {imagePreview && (
                 <div className="mt-4 relative">
-                  <img src={imagePreview} alt="Preview" className="max-w-full h-32 object-cover rounded" />
+                  <img 
+                    src={imagePreview} 
+                    alt="Preview" 
+                    className="max-w-full h-32 object-cover rounded" 
+                  />
                   <button
                     type="button"
                     onClick={() => {
                       setImageFile(null);
                       setImagePreview('');
                     }}
-                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                    className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 touch-manipulation"
+                    aria-label="Remove image"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -264,7 +272,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Document
             </label>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+            <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-gray-400 transition-colors">
               <input
                 type="file"
                 accept=".pdf,.doc,.docx,.txt"
@@ -274,18 +282,19 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
               />
               <label
                 htmlFor="doc-upload"
-                className="cursor-pointer flex flex-col items-center space-y-2"
+                className="cursor-pointer flex flex-col items-center space-y-2 touch-manipulation"
               >
                 <FileText className="w-8 h-8 text-gray-400" />
-                <span className="text-sm text-gray-600">Upload a document</span>
+                <span className="text-sm text-gray-600 text-center">Upload a document</span>
               </label>
               {docFile && (
-                <div className="mt-4 flex items-center justify-between bg-gray-50 p-2 rounded">
-                  <span className="text-sm text-gray-700">{docFile.name}</span>
+                <div className="mt-4 flex items-center justify-between bg-gray-50 p-3 rounded">
+                  <span className="text-sm text-gray-700 truncate flex-1">{docFile.name}</span>
                   <button
                     type="button"
                     onClick={() => setDocFile(null)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-red-500 hover:text-red-700 ml-2 touch-manipulation"
+                    aria-label="Remove document"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -301,7 +310,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
             </label>
             <div className="space-y-4">
               {/* Video File Upload */}
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 hover:border-gray-400 transition-colors">
                 <input
                   type="file"
                   accept="video/*"
@@ -311,21 +320,26 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
                 />
                 <label
                   htmlFor="video-upload"
-                  className="cursor-pointer flex flex-col items-center space-y-2"
+                  className="cursor-pointer flex flex-col items-center space-y-2 touch-manipulation"
                 >
                   <Video className="w-8 h-8 text-gray-400" />
-                  <span className="text-sm text-gray-600">Upload a video</span>
+                  <span className="text-sm text-gray-600 text-center">Upload a video</span>
                 </label>
                 {videoPreview && (
                   <div className="mt-4 relative">
-                    <video src={videoPreview} controls className="max-w-full h-32 rounded" />
+                    <video 
+                      src={videoPreview} 
+                      controls 
+                      className="max-w-full h-32 rounded" 
+                    />
                     <button
                       type="button"
                       onClick={() => {
                         setVideoFile(null);
                         setVideoPreview('');
                       }}
-                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1"
+                      className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 touch-manipulation"
+                      aria-label="Remove video"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -335,12 +349,13 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
 
               {/* YouTube URL */}
               <div className="flex items-center space-x-2">
-                <Youtube className="w-5 h-5 text-red-500" />
+                <Youtube className="w-5 h-5 text-red-500 flex-shrink-0" />
                 <Input
                   value={youtubeUrl}
                   onChange={(e) => setYoutubeUrl(e.target.value)}
                   placeholder="Or paste YouTube URL"
                   disabled={!!videoFile}
+                  className="h-12 sm:h-10 text-base"
                 />
               </div>
               {youtubeUrl && getYouTubeEmbedUrl(youtubeUrl) && (
@@ -350,6 +365,7 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
                     className="w-full h-32 rounded"
                     frameBorder="0"
                     allowFullScreen
+                    title="YouTube video preview"
                   />
                 </div>
               )}
@@ -357,18 +373,20 @@ const DailyLogForm = ({ onClose, onSuccess }: DailyLogFormProps) => {
           </div>
 
           {/* Submit Button */}
-          <div className="flex justify-end space-x-3 pt-4 border-t">
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3 pt-4 border-t">
             <Button
               type="button"
               variant="outline"
               onClick={onClose}
               disabled={saving}
+              className="w-full sm:w-auto h-12 sm:h-10"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={saving || !title.trim()}
+              className="w-full sm:w-auto h-12 sm:h-10"
             >
               {saving ? 'Saving...' : 'Save Entry'}
             </Button>

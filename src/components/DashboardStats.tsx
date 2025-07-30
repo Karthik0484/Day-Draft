@@ -81,7 +81,7 @@ const DashboardStats = ({ tasks, files, links, spendingLogs = [] }: DashboardSta
     },
     {
       name: 'Today\'s Spending',
-      value: `$${todaySpending.toFixed(2)}`,
+      value: `Rs. ${todaySpending.toFixed(2)}`,
       icon: DollarSign,
       color: 'text-green-600',
       bgColor: 'bg-green-50',
@@ -89,18 +89,23 @@ const DashboardStats = ({ tasks, files, links, spendingLogs = [] }: DashboardSta
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
       {stats.map((stat) => {
         const Icon = stat.icon;
         return (
-          <div key={stat.name} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div 
+            key={stat.name} 
+            className="bg-white rounded-xl shadow-sm border border-gray-200 p-3 sm:p-4 lg:p-6 hover:shadow-md transition-shadow duration-200 touch-manipulation"
+          >
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-600">{stat.name}</p>
-                <p className="text-3xl font-bold text-gray-900 mt-2">{stat.value}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs sm:text-sm font-medium text-gray-600 truncate">{stat.name}</p>
+                <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mt-1 sm:mt-2 leading-tight">
+                  {stat.value}
+                </p>
               </div>
-              <div className={`p-3 rounded-lg ${stat.bgColor}`}>
-                <Icon className={`w-6 h-6 ${stat.color}`} />
+              <div className={`p-2 sm:p-3 rounded-lg ${stat.bgColor} flex-shrink-0 ml-2 sm:ml-3`}>
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${stat.color}`} />
               </div>
             </div>
           </div>

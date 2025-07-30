@@ -101,33 +101,39 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       <DashboardHeader />
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
             Welcome back, {user.user_metadata?.full_name || user.email}!
           </h1>
-          <p className="text-gray-600 mt-2">Here's what's happening with your productivity today.</p>
+          <p className="text-sm sm:text-base text-gray-600 mt-2 sm:mt-3">
+            Here's what's happening with your productivity today.
+          </p>
         </div>
 
         {/* Stats Overview */}
-        <DashboardStats tasks={tasks} files={files} links={links} spendingLogs={spendingLogs} />
+        <div className="mb-6 sm:mb-8">
+          <DashboardStats tasks={tasks} files={files} links={links} spendingLogs={spendingLogs} />
+        </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Task Manager */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Task Management</h2>
+          <div className="xl:col-span-2">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
+                Quick Task Management
+              </h2>
               <TaskManager />
             </div>
           </div>
 
           {/* Right Column - Activity & Performance */}
-          <div className="space-y-8">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8">
             <RecentActivity tasks={tasks} files={files} links={links} />
             <PerformanceChart />
           </div>

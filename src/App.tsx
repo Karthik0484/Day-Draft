@@ -40,7 +40,7 @@ const App = () => (
                 path="/dashboard"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Dashboard />
                     </div>
                   </ProtectedRoute>
@@ -50,7 +50,7 @@ const App = () => (
                 path="/tasks"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Tasks />
                     </div>
                   </ProtectedRoute>
@@ -60,7 +60,7 @@ const App = () => (
                 path="/calendar"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Calendar />
                     </div>
                   </ProtectedRoute>
@@ -70,7 +70,7 @@ const App = () => (
                 path="/files"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Files />
                     </div>
                   </ProtectedRoute>
@@ -80,7 +80,7 @@ const App = () => (
                 path="/links"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Links />
                     </div>
                   </ProtectedRoute>
@@ -90,7 +90,7 @@ const App = () => (
                 path="/daily-logs"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <DailyLogs />
                     </div>
                   </ProtectedRoute>
@@ -100,7 +100,7 @@ const App = () => (
                 path="/spending"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Spending />
                     </div>
                   </ProtectedRoute>
@@ -110,7 +110,7 @@ const App = () => (
                 path="/analytics"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Analytics />
                     </div>
                   </ProtectedRoute>
@@ -120,7 +120,7 @@ const App = () => (
                 path="/search"
                 element={
                   <ProtectedRoute>
-                    <div className="pb-24 md:pb-0">
+                    <div className="pb-24 lg:pb-0">
                       <Search />
                     </div>
                   </ProtectedRoute>

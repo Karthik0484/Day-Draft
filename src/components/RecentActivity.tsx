@@ -61,25 +61,25 @@ const RecentActivity = ({ tasks, files, links }: RecentActivityProps) => {
   ].sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime()).slice(0, 5);
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+      <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Recent Activity</h3>
       
       {activities.length === 0 ? (
-        <p className="text-gray-500 text-center py-8">No recent activity</p>
+        <p className="text-gray-500 text-center py-6 sm:py-8 text-sm sm:text-base">No recent activity</p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {activities.map((activity) => {
             const Icon = activity.icon;
             return (
-              <div key={activity.id} className="flex items-start space-x-3">
-                <div className="flex-shrink-0">
-                  <Icon className={`w-5 h-5 ${activity.color}`} />
+              <div key={activity.id} className="flex items-start space-x-3 hover:bg-gray-50 rounded-lg p-2 -m-2 transition-colors">
+                <div className="flex-shrink-0 mt-0.5">
+                  <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${activity.color}`} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm sm:text-base font-medium text-gray-900 truncate leading-tight">
                     {activity.title}
                   </p>
-                  <p className="text-xs text-gray-500">{activity.subtitle}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5">{activity.subtitle}</p>
                   <p className="text-xs text-gray-400 mt-1">
                     {formatDistanceToNow(new Date(activity.time), { addSuffix: true })}
                   </p>
