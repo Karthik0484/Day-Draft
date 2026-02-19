@@ -1,8 +1,8 @@
-# Day-Draft - Mobile-First Productivity App
+# Day-Draft - Productivity App
 
 A comprehensive productivity application built with React, TypeScript, and Tailwind CSS, featuring a fully responsive mobile-first design that works seamlessly across all devices.
 
-## 🎯 Mobile-First Responsive Design
+## 🎯Responsive Design
 
 The Day-Draft application has been completely redesigned with a mobile-first approach, ensuring optimal user experience across all screen sizes:
 
@@ -190,9 +190,7 @@ const MyComponent = () => {
 2. **Janky Scrolling**: Use `-webkit-overflow-scrolling: touch`
 3. **Memory Issues**: Clean up event listeners in useEffect
 
-### 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ### 🤝 Contributing
 
@@ -211,4 +209,4 @@ For support and questions about mobile responsiveness:
 
 ---
 
-**Built with ❤️ and mobile-first design principles**
+**Built with mobile-first design principles**
